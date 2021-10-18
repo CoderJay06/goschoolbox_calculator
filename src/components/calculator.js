@@ -1,9 +1,16 @@
 import React from "react";
+import Display from "../components/display";
+import NumberKeys from "../components/numberkeys";
+import Operators from "../components/operators";
 
 function Calculator() {
   return (
     <div className="calculator">
-      <h1>GoSchoolBox Calculator</h1>
+      <Display />
+      <div className="calculator pad">
+        <NumberKeys />
+        <Operators />
+      </div>
     </div>
   );
 }

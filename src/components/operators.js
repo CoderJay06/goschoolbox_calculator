@@ -3,10 +3,12 @@ import React from "react";
 function Operators() {
   return (
     <>
-      <button>Add</button>
-      <button>Subtract</button>
-      <button>Multiply</button>
-      <button>Divide</button>
+      <button>+</button>
+      <button>-</button>
+      <button>X</button>
+      <button>/</button>
+      <button>Clr</button>
+      <button>=</button>
     </>
   );
 }
