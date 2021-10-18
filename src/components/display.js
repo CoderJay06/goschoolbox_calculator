@@ -1,7 +1,7 @@
 import React from "react";
 
 function Display() {
-  return <div>Display</div>;
+  return <input className="display" />;
 }
 
 export default Display;
