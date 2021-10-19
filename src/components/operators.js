@@ -1,22 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Operators({ setOperator, setEqualSign, clear, getResult }) {
+function Operators({
+  setOperator,
+  setEqualSign,
+  clear,
+  getResult,
+  isResultDisplayed
+}) {
   const operatorSymbols = ["+", "-", "X", "/", "Clr", "="];
 
   const handleSettingOperator = (operator) => {
-    console.log(operator);
-
-    console.log(operator);
-    if (operator !== "Clr" && operator !== "=") {
-      // console.log('op ', operator)
-      setOperator(operator);
-    } else if (operator === "Clr") {
-      console.log("clr!");
+    if (isResultDisplayed() && operator) {
+      // reset if key pressed when result already shown
       clear();
-      document.querySelector(".display").value = "0";
-    } else if (operator === "=") {
-      setEqualSign(operator);
-      getResult();
+    } else {
+      // set operator
+      if (operator !== "Clr" && operator !== "=") {
+        setOperator(operator);
+      } else if (operator === "Clr") {
+        clear();
+        document.querySelector(".display").value = "0";
+      } else if (operator === "=") {
+        setEqualSign(operator);
+        getResult();
+      }
     }
   };
 

@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 
-function NumberKeys({ setOperand1, setOperand2, isOperator }) {
-  // const [operand1, setOperand1] = useState(0);
-  // const [operand2, setOperand2] = useState(0);
+function NumberKeys({
+  setOperand1,
+  setOperand2,
+  isOperator,
+  isResultDisplayed,
+  clear
+}) {
   const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const handleSettingOperand = (num) => {
-    console.log(num);
-
-    if (!isOperator) {
-      setOperand1((prevOp) => prevOp.concat(num));
-    } else if (isOperator) {
-      setOperand2((prevOp) => prevOp.concat(num));
+    if (isResultDisplayed() && num) {
+      // reset if key pressed when result already shown
+      clear();
+    } else {
+      // set operand
+      if (!isOperator) {
+        setOperand1((prevOp) => prevOp.concat(num));
+      } else if (isOperator) {
+        setOperand2((prevOp) => prevOp.concat(num));
+      }
     }
   };
 

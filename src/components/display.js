@@ -1,10 +1,5 @@
 import React from "react";
 
-/*
-  - show numbers and symbols user presses as the value
-  - display: operand1 | operator | operand2 = result
-*/
-
 function Display({ operand1, operand2, operator, equalSign, result }) {
   return (
     <input

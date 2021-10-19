@@ -41,8 +41,14 @@ function Calculator() {
     }
   };
 
+  const isResultDisplayed = () => {
+    console.log("r ", result);
+    return result !== "";
+  };
+
   return (
     <div className="calculator">
+      {console.log(result !== "")}
       <Display
         operand1={operand1}
         operand2={operand2}
@@ -55,12 +61,15 @@ function Calculator() {
           setOperand1={setOperand1}
           setOperand2={setOperand2}
           isOperator={operator !== ""}
+          isResultDisplayed={isResultDisplayed}
+          clear={handleClear}
         />
         <Operators
           setOperator={setOperator}
           setEqualSign={setEqualSign}
           clear={handleClear}
           getResult={getResult}
+          isResultDisplayed={isResultDisplayed}
         />
       </div>
     </div>
