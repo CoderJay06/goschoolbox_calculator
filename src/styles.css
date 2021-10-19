@@ -1,6 +1,7 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  margin: 100px auto;
 }
 
 .calculator .pad {
@@ -40,4 +41,13 @@ button {
   color: whitesmoke;
   font-weight: 900;
   font-size: 1.125rem;
+}
+
+button:hover,
+button:focus {
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.7;
 }
