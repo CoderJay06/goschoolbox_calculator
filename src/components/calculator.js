@@ -24,6 +24,18 @@ function Calculator() {
         const sum = Number(operand1) + Number(operand2);
         setResult(sum);
         break;
+      case "-":
+        const difference = Number(operand1) - Number(operand2);
+        setResult(difference);
+        break;
+      case "X":
+        const product = Number(operand1) * Number(operand2);
+        setResult(product);
+        break;
+      case "/":
+        const quotient = Math.floor(Number(operand1) / Number(operand2));
+        setResult(quotient);
+        break;
       default:
         break;
     }
