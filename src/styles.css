@@ -1,3 +1,7 @@
+body {
+  background: rgb(174, 205, 226);
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -21,6 +25,8 @@
   padding: 0.5em;
   font-size: 1.125rem;
   font-weight: 600;
+  color: #000;
+  opacity: 0.9;
 }
 
 .calculator .pad,
