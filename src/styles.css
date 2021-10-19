@@ -8,17 +8,19 @@
   display: grid;
   grid-template: repeat(4, 1fr) / repeat(4, 1fr);
   margin: 0 auto;
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
 }
 
 .display {
   margin: 0 auto;
-  width: 235px;
-  height: 25px;
+  width: 280px;
+  height: 30px;
   border: 1px solid;
   background: rgba(241, 240, 240, 0.95);
   padding: 0.5em;
+  font-size: 1.125rem;
+  font-weight: 600;
 }
 
 .calculator .pad,
