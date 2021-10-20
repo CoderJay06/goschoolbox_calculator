@@ -8,6 +8,14 @@ body {
   margin: 100px auto;
 }
 
+h1 {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.5rem;
+  font-style: italic;
+  text-decoration: underline;
+}
+
 .calculator .pad {
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);

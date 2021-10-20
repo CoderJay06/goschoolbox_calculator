@@ -15,7 +15,7 @@ function Calculator() {
     setOperand1("");
     setOperand2("");
     setOperator("");
-    setIsSqrtOperator((prevState) => !prevState);
+    setIsSqrtOperator(false);
     setEqualSign("");
     setResult("");
   };
@@ -47,6 +47,7 @@ function Calculator() {
     }
   };
 
+  // functions for checking edge cases
   const hasDecimal = (operand) => {
     return operand.includes(".");
   };

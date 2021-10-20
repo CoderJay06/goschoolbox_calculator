@@ -12,51 +12,59 @@ function NumberKeys({
   isResultDisplayed,
   clear
 }) {
-  const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
+  const numberKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
 
-  const handleSettingOperand = (num) => {
-    if (isResultDisplayed() && num) {
-      // reset if key pressed when result already shown
+  const handleSettingOperand = (operandInput) => {
+    // reset if key pressed when result already shown
+    if (isResultDisplayed() && operandInput) {
       clear();
       return;
     }
 
+    // set operands
     if (!isOperator) {
       // prevent adding decimals without numbers for operand1
-      if (num === "." && !hasNumbers(operand1)) {
+      if (operandInput === "." && !hasNumbers(operand1)) {
         return;
       }
 
       // prevent entering or starting with only zeros for operand1
-      if (num === "0" && !hasNumbers(operand1)) return;
+      if (operandInput === "0" && !hasNumbers(operand1)) return;
 
       setOperand1((prevOp) =>
-        hasDecimal(prevOp) && num === "." ? prevOp : prevOp.concat(num)
+        hasDecimal(prevOp) && operandInput === "."
+          ? prevOp
+          : prevOp.concat(operandInput)
       );
     } else if (isOperator) {
+      // prevent setting more than one number for square root
+      if (isSqrtOperator) return;
+
       // prevent adding decimals without numbers for operand2
-      if (num === "." && !hasNumbers(operand2)) {
+      if (operandInput === "." && !hasNumbers(operand2)) {
         return;
       }
 
       // prevent entering or starting with only zeros for operand2
-      if (num === "0" && !hasNumbers(operand2)) return;
+      if (operandInput === "0" && !hasNumbers(operand2)) return;
 
       setOperand2((prevOp) =>
-        hasDecimal(prevOp) && num === "." ? prevOp : prevOp.concat(num)
+        hasDecimal(prevOp) && operandInput === "."
+          ? prevOp
+          : prevOp.concat(operandInput)
       );
     }
   };
 
   return (
     <>
-      {numbers.map((num) => (
+      {numberKeys.map((numKey) => (
         <button
-          key={num}
+          key={numKey}
           onClick={(e) => handleSettingOperand(e.target.value)}
-          value={`${num}`}
+          value={`${numKey}`}
         >
-          {num}
+          {numKey}
         </button>
       ))}
     </>

@@ -15,22 +15,24 @@ function Operators({
   const operatorSymbols = ["+", "-", "X", "/", "√", "Clr", "="];
 
   const handleSettingOperator = (operatorInput) => {
+    // reset if key pressed when result already shown
     if (isResultDisplayed() && operatorInput) {
-      // reset if key pressed when result already shown
       clear();
     } else {
-      // set operator
-
+      // set operator if hasn't been set and number is shown
       if (operator === "" && hasAnOperand()) {
-        if (operatorInput !== "Clr" && operatorInput !== "=") {
+        if (
+          operatorInput !== "Clr" &&
+          operatorInput !== "=" &&
+          operatorInput !== "√"
+        ) {
           setOperator(operatorInput);
         } else if (operatorInput === "√") {
           setOperator(operatorInput);
           setIsSqrtOperator((prevState) => !prevState);
-          return;
         }
       }
-      console.log(isSqrtOperator);
+
       if (operatorInput === "Clr") {
         clear();
         document.querySelector(".display").value = "0";
