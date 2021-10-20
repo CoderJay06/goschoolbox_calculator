@@ -14,6 +14,17 @@ function Operators({
 }) {
   const operatorSymbols = ["+", "-", "X", "/", "√", "Clr", "="];
 
+  const renderOperatorSymbols = () =>
+    operatorSymbols.map((symbol) => (
+      <button
+        key={symbol}
+        onClick={(e) => handleSettingOperator(e.target.value)}
+        value={`${symbol}`}
+      >
+        {symbol}
+      </button>
+    ));
+
   const handleSettingOperator = (operatorInput) => {
     // reset if key pressed when result already shown
     if (isResultDisplayed() && operatorInput) {
@@ -32,7 +43,7 @@ function Operators({
           setIsSqrtOperator((prevState) => !prevState);
         }
       }
-
+      // check for clear or equal sign key press
       if (operatorInput === "Clr") {
         clear();
         document.querySelector(".display").value = "0";
@@ -46,19 +57,7 @@ function Operators({
     }
   };
 
-  return (
-    <>
-      {operatorSymbols.map((symbol) => (
-        <button
-          key={symbol}
-          onClick={(e) => handleSettingOperator(e.target.value)}
-          value={`${symbol}`}
-        >
-          {symbol}
-        </button>
-      ))}
-    </>
-  );
+  return <>{renderOperatorSymbols()}</>;
 }
 
 export default Operators;

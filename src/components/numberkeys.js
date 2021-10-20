@@ -14,6 +14,17 @@ function NumberKeys({
 }) {
   const numberKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
 
+  const renderNumberKeys = () =>
+    numberKeys.map((numKey) => (
+      <button
+        key={numKey}
+        onClick={(e) => handleSettingOperand(e.target.value)}
+        value={`${numKey}`}
+      >
+        {numKey}
+      </button>
+    ));
+
   const handleSettingOperand = (operandInput) => {
     // reset if key pressed when result already shown
     if (isResultDisplayed() && operandInput) {
@@ -56,19 +67,7 @@ function NumberKeys({
     }
   };
 
-  return (
-    <>
-      {numberKeys.map((numKey) => (
-        <button
-          key={numKey}
-          onClick={(e) => handleSettingOperand(e.target.value)}
-          value={`${numKey}`}
-        >
-          {numKey}
-        </button>
-      ))}
-    </>
-  );
+  return <>{renderNumberKeys()}</>;
 }
 
 export default NumberKeys;
