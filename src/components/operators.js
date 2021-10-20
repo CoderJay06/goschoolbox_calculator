@@ -1,27 +1,44 @@
 import React from "react";
 
 function Operators({
+  operator,
   setOperator,
   setEqualSign,
+  setIsSqrtOperator,
+  isSqrtOperator,
   clear,
   getResult,
-  isResultDisplayed
+  isResultDisplayed,
+  hasAnOperand,
+  hasBothOperands
 }) {
-  const operatorSymbols = ["+", "-", "X", "/", "Clr", "="];
+  const operatorSymbols = ["+", "-", "X", "/", "√", "Clr", "="];
 
-  const handleSettingOperator = (operator) => {
-    if (isResultDisplayed() && operator) {
+  const handleSettingOperator = (operatorInput) => {
+    if (isResultDisplayed() && operatorInput) {
       // reset if key pressed when result already shown
       clear();
     } else {
       // set operator
-      if (operator !== "Clr" && operator !== "=") {
-        setOperator(operator);
-      } else if (operator === "Clr") {
+
+      if (operator === "" && hasAnOperand()) {
+        if (operatorInput !== "Clr" && operatorInput !== "=") {
+          setOperator(operatorInput);
+        } else if (operatorInput === "√") {
+          setOperator(operatorInput);
+          setIsSqrtOperator((prevState) => !prevState);
+          return;
+        }
+      }
+      console.log(isSqrtOperator);
+      if (operatorInput === "Clr") {
         clear();
         document.querySelector(".display").value = "0";
-      } else if (operator === "=") {
-        setEqualSign(operator);
+      } else if (
+        operatorInput === "=" &&
+        (hasBothOperands() || isSqrtOperator)
+      ) {
+        setEqualSign(operatorInput);
         getResult();
       }
     }

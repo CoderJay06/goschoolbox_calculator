@@ -10,7 +10,7 @@ body {
 
 .calculator .pad {
   display: grid;
-  grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   margin: 0 auto;
   width: 300px;
   height: 300px;
@@ -47,6 +47,7 @@ button {
     #2980b9
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: whitesmoke;
+  padding: 1em;
   font-weight: 900;
   font-size: 1.125rem;
 }
