@@ -18,39 +18,33 @@ function NumberKeys({
     if (isResultDisplayed() && num) {
       // reset if key pressed when result already shown
       clear();
-    } else {
-      // set operand for calculating square root
-      if (isSqrtOperator) {
-        setOperand1((prevOp) => prevOp.concat(num));
+      return;
+    }
+
+    if (!isOperator) {
+      // prevent adding decimals without numbers for operand1
+      if (num === "." && !hasNumbers(operand1)) {
         return;
       }
 
-      // set all other operands
-      if (!isOperator) {
-        // prevent adding decimals without numbers for operand1
-        if (num === "." && !hasNumbers(operand1)) {
-          return;
-        }
+      // prevent entering or starting with only zeros for operand1
+      if (num === "0" && !hasNumbers(operand1)) return;
 
-        // prevent entering or starting with only zeros for operand1
-        if (num === "0" && !hasNumbers(operand1)) return;
-
-        setOperand1((prevOp) =>
-          hasDecimal(prevOp) && num === "." ? prevOp : prevOp.concat(num)
-        );
-      } else if (isOperator) {
-        // prevent adding decimals without numbers for operand2
-        if (num === "." && !hasNumbers(operand2)) {
-          return;
-        }
-
-        // prevent entering or starting with only zeros for operand2
-        if (num === "0" && !hasNumbers(operand2)) return;
-
-        setOperand2((prevOp) =>
-          hasDecimal(prevOp) && num === "." ? prevOp : prevOp.concat(num)
-        );
+      setOperand1((prevOp) =>
+        hasDecimal(prevOp) && num === "." ? prevOp : prevOp.concat(num)
+      );
+    } else if (isOperator) {
+      // prevent adding decimals without numbers for operand2
+      if (num === "." && !hasNumbers(operand2)) {
+        return;
       }
+
+      // prevent entering or starting with only zeros for operand2
+      if (num === "0" && !hasNumbers(operand2)) return;
+
+      setOperand2((prevOp) =>
+        hasDecimal(prevOp) && num === "." ? prevOp : prevOp.concat(num)
+      );
     }
   };
 
